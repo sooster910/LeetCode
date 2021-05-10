@@ -3,16 +3,14 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let maxPrice=0;
-    let buyPrice = prices[0];
+   
+    let min = prices[0], max = 0;
     
-    for (let i=1; i<prices.length;i++){
-        if (prices[i]<buyPrice){
-            buyPrice=prices[i];
-        }else if(prices[i] - buyPrice >maxPrice){
-            maxPrice = prices[i] - buyPrice;
-            
-        }
+    for(let i = 1; i < prices.length; i++){
+        max = Math.max(prices[i] - min, max);
+        min = Math.min(prices[i], min);
     }
-    return maxPrice;
+    
+    return max;
+
 };
